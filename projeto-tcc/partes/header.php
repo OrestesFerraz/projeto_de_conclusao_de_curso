@@ -1,130 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
-    <style>
-        .margin {
-            margin-left: 10%;
-        }
-        .login {
-            transition: 1s;
-            cursor: pointer;
-          
-        }
-        .login:hover {
-            transform: scale(1.1);
-            
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .nav-link {
-            transition: 0.3s;
-        }
-        .nav-link:hover{
-            transform: scale(0.9);
-        }
 
-       
-    </style>
-    
+  <!-- Bootstrap CSS (only once) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+  <title>Phisis</title>
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    header {
+      box-shadow: inset -2px 8px 300px -150px rgba(0,0,0,1);
+      padding: 1vw;
+      background-color: rgba(255, 255, 255, 0);
+      backdrop-filter: blur(15px);
+    }
+
+    .rock-salt-regular {
+      font-family: "Rock Salt", cursive;
+      font-weight: 400;
+      font-style: normal;
+      cursor: default;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgba(17, 17, 17, 0.288);
+      backdrop-filter: blur(5px);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+ 
+    .closebtn:active {
+      transform: rotateX(360deg);
+      transition: 0.5s;
+    }
+
+    .navContainer {
+      /*background-color: #474747;*/
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+    }
+
+    .itemNav {
+      background-color: #2929291a;
+      backdrop-filter: blur(5px);
+      width:90%;
+      border-top-right-radius: 20px;  
+      border-bottom-right-radius: 20px; 
+    }
+
+    .itemNav:hover {
+      background-color: #47474762;
+      border-left: 0.5vw solid #81818183;
+    }
+  </style>
 </head>
-<body data-bs-theme="dark">
-    
-<!-- Botão para abrir o offcanvas -->
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-  </button>
 
-  <!-- Offcanvas -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h1 class="offcanvas-title" id="offcanvasExampleLabel">Navegar</h1>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-    </div>
-    
-    <div class="margin d-flex align-items-center login">
-        <h3>
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="M226-262q59-42.33 121.33-65.5 62.34-23.17 132.67-23.17 70.33 0 133 23.17T734.67-262q41-49.67 59.83-103.67T813.33-480q0-141-96.16-237.17Q621-813.33 480-813.33t-237.17 96.16Q146.67-621 146.67-480q0 60.33 19.16 114.33Q185-311.67 226-262Zm253.88-184.67q-58.21 0-98.05-39.95Q342-526.58 342-584.79t39.96-98.04q39.95-39.84 98.16-39.84 58.21 0 98.05 39.96Q618-642.75 618-584.54t-39.96 98.04q-39.95 39.83-98.16 39.83ZM480.31-80q-82.64 0-155.64-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.51T80-480.18q0-82.82 31.5-155.49 31.5-72.66 85.83-127Q251.67-817 324.51-848.5T480.18-880q82.82 0 155.49 31.5 72.66 31.5 127 85.83Q817-708.33 848.5-635.65 880-562.96 880-480.31q0 82.64-31.5 155.64-31.5 73-85.83 127.34Q708.33-143 635.65-111.5 562.96-80 480.31-80Zm-.31-66.67q54.33 0 105-15.83t97.67-52.17q-47-33.66-98-51.5Q533.67-284 480-284t-104.67 17.83q-51 17.84-98 51.5 47 36.34 97.67 52.17 50.67 15.83 105 15.83Zm0-366.66q31.33 0 51.33-20t20-51.34q0-31.33-20-51.33T480-656q-31.33 0-51.33 20t-20 51.33q0 31.34 20 51.34 20 20 51.33 20Zm0-71.34Zm0 369.34Z"/></svg>
-            login
-        </h3>
-    </div>
+<body>
 
-    
-    <div class="offcanvas-body" id="nav">
-      <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 98%;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4"></span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item ">
-            <a href="inicio.php" class="nav-link link-body-emphasis d-flex align-items-center" id="inicio" aria-current="page">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
-              Início
-            </a>
-          </li>
-          <hr>
-          <li class="nav-item">
-                <a href="" class="nav-link link-body-emphasis d-flex align-items-center">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M342-160h276l40-160H302l40 160Zm0 80q-28 0-49-17t-28-44l-45-179h520l-45 179q-7 27-28 44t-49 17H342ZM200-400h560v-80H200v80Zm280-240q0-100 70-170t170-70q0 90-57 156t-143 80v84h320v160q0 33-23.5 56.5T760-320H200q-33 0-56.5-23.5T120-400v-160h320v-84q-86-14-143-80t-57-156q100 0 170 70t70 170Z"/></svg>
-                    Plantas
-                </a>
-          </li>
-          <hr>
-          <li>
-            <a href="#" class="nav-link link-body-emphasis d-flex align-items-center">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m260-520 220-360 220 360H260ZM700-80q-75 0-127.5-52.5T520-260q0-75 52.5-127.5T700-440q75 0 127.5 52.5T880-260q0 75-52.5 127.5T700-80Zm-580-20v-320h320v320H120Zm580-60q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm-500-20h160v-160H200v160Zm202-420h156l-78-126-78 126Zm78 0ZM360-340Zm340 80Z"/></svg>
-              Sobre
-            </a>
-          </li>
-          <hr>
-          <li>
-            <a href="#" class="nav-link link-body-emphasis">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-360q17 0 29.5-12.5T602-402q0-17-12.5-29.5T560-444q-17 0-29.5 12.5T518-402q0 17 12.5 29.5T560-360Zm-30-128h60q0-29 6-42.5t28-35.5q30-30 40-48.5t10-43.5q0-45-31.5-73.5T560-760q-41 0-71.5 23T446-676l54 22q9-25 24.5-37.5T560-704q24 0 39 13.5t15 36.5q0 14-8 26.5T578-596q-33 29-40.5 45.5T530-488ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z"/></svg>
-              Faq
-            </a>
-          </li>
-          <hr>
-          <li>
-            <a href="#" class="nav-link link-body-emphasis">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
-              Contatos
-            </a>
-          </li>
-          <hr>
-        </ul>
-      </div>
+  <!-- Header -->
+  <header class="d-flex align-items-center justify-content-between">
+    <button class="btn btn-dark" style="font-size:30px;cursor:pointer;" onclick="openNav()" aria-label="Open menu">
+      <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"/></svg>
+    </button>
+
+    <h3 class="rock-salt-regular">phisis</h3>
+  </header>
+
+  <!-- Side Navigation -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="navContainer">
+      <a href="" class="d-flex align-items-center itemNav" >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="M226.67-186.67h140v-246.66h226.66v246.66h140v-380L480-756.67l-253.33 190v380ZM160-120v-480l320-240 320 240v480H526.67v-246.67h-93.34V-120H160Zm320-352Z"/></svg>
+        Início
+      </a>
+
+      <a href="" class="d-flex align-items-center itemNav" >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="M480-80q-72.33-8.33-144-40.83T207.5-212q-56.83-58.67-92.17-146Q80-445.33 80-563.32V-602h38.67Q171-602 229-584t104.33 48q9.34-88.67 50.17-182.5T480-879.33q55.67 67 96.5 160.83 40.83 93.83 50.17 182.5Q673-564.67 731-583.33 789-602 841.33-602H880v38.68q0 117.99-35.33 205.32-35.34 87.33-92.17 146t-128.33 91.17Q552.67-88.33 480-80Zm4.67-68q-11-179.33-104.43-271.79Q286.81-512.25 148-534q12.33 185.67 108.83 277 96.5 91.33 227.84 109Zm-5.34-248q14.34-24.67 37.84-52.5 23.5-27.83 45.5-46.83 2.66-64.34-20.84-131.67-23.5-67.33-61.83-137-38.33 69.67-61.83 137t-20.84 131.67q22 19 45 46.83t37 52.5Zm72 230.67q43.67-15.34 88-41.67 44.34-26.33 80.84-69.5T781.83-383Q807-446.33 812-534q-102 16-179.67 71.17-77.66 55.16-115.66 137.5 12 36 20.83 74.33 8.83 38.33 13.83 85.67Zm-72-230.67Zm72 230.67ZM484.67-148Zm32-177.33ZM480-80Z"/></svg>
+        Plantas
+      </a>
+
+      <a href="" class="d-flex align-items-center itemNav" >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="M548.67-346.67q16.73 0 29.03-12.3T590-388q0-16.73-12.3-29.03t-29.03-12.3q-16.73 0-29.04 12.3-12.3 12.3-12.3 29.03t12.3 29.03q12.31 12.3 29.04 12.3ZM522-473.33h51.33q1.34-29 7.67-42.84Q587.33-530 612-554q28-27.33 38.33-46.43 10.34-19.1 10.34-44.9 0-45.59-31.5-74.46-31.5-28.88-82.5-28.88-39 0-69.17 21.34Q447.33-706 434-668.67l48 20q10.33-25 26.5-37.83 16.17-12.83 38.17-12.83 27.85 0 45.26 15.83 17.4 15.83 17.4 40.83 0 18-8.66 32.17Q592-596.33 570-578.67q-32.33 29-40.17 46.17-7.83 17.17-7.83 59.17Zm-242 260q-27 0-46.83-19.84Q213.33-253 213.33-280v-533.33q0-27 19.84-46.84Q253-880 280-880h533.33q27 0 46.84 19.83Q880-840.33 880-813.33V-280q0 27-19.83 46.83-19.84 19.84-46.84 19.84H280Zm0-66.67h533.33v-533.33H280V-280ZM146.67-80q-27 0-46.84-19.83Q80-119.67 80-146.67v-600h66.67v600h600V-80h-600ZM280-813.33V-280v-533.33Z"/></svg>
+        Faq
+      </a>
+
+      <a href="" class="d-flex align-items-center itemNav" >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="m260.67-524 220-356 220 356h-440ZM704-80q-74.33 0-125.17-50.83Q528-181.67 528-256t50.83-125.17Q629.67-432 704-432t125.17 50.83Q880-330.33 880-256t-50.83 125.17Q778.33-80 704-80Zm-584-23.33v-309.34h309.33v309.34H120Zm584.06-43.34q45.94 0 77.61-31.72 31.66-31.72 31.66-77.67 0-45.94-31.72-77.61-31.72-31.66-77.67-31.66-45.94 0-77.61 31.72-31.66 31.72-31.66 77.67 0 45.94 31.72 77.61 31.72 31.66 77.67 31.66ZM186.67-170h176v-176h-176v176ZM380-590.67h201.33L480.67-753.33 380-590.67Zm100.67 0ZM362.67-346ZM704-256Z"/></svg>
+        sobre
+      </a>
+
+      <a href="" class="d-flex align-items-center itemNav">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M796-120q-119 0-240-55.5T333-333Q231-435 175.5-556T120-796q0-18.86 12.57-31.43T164-840h147.33q14 0 24.34 9.83Q346-820.33 349.33-806l26.62 130.43q2.05 14.9-.62 26.24-2.66 11.33-10.82 19.48L265.67-530q24 41.67 52.5 78.5T381-381.33q35 35.66 73.67 65.5Q493.33-286 536-262.67l94.67-96.66q9.66-10.34 23.26-14.5 13.61-4.17 26.74-2.17L806-349.33q14.67 4 24.33 15.53Q840-322.27 840-308v144q0 18.86-12.57 31.43T796-120ZM233-592l76-76.67-21-104.66H187q3 41.66 13.67 86Q211.33-643 233-592Zm365.33 361.33q40.34 18.34 85.84 29.67 45.5 11.33 89.16 13.67V-288l-100-20.33-75 77.66ZM233-592Zm365.33 361.33Z"/></svg>
+        contato
+      </a>
+
+
+     
+      
+
     </div>
+    
   </div>
 
+  
+
+  <!-- JS for sidenav -->
   <script>
 
-  let courrentPage;
-  // Função para adicionar a classe 'active' ao item correto
-  function setActivePage() {
-    // Remove a classe active de todos os links
-    document.querySelectorAll('.nav-link').forEach(function(link) {
-      link.classList.remove('active');
-    });
-
-    // Adiciona a classe active ao item correspondente à página atual
-    var activeLink = document.getElementById(currentPage);
-    if (activeLink) {
-      activeLink.classList.add('active');
+    function openNav() {
+      if (window.innerWidth > 1080) {
+        document.getElementById("mySidenav").style.width = "30%";
+        console.log("Largura da janela:", window.innerWidth, "px");
+      } else {
+        document.getElementById("mySidenav").style.width = "100%";
+        console.log("Largura da janela:", window.innerWidth), "px";
+      }
+      
     }
-  }
 
-  // Chama a função quando a página for carregada
-  window.onload = setActivePage;
-</script>
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
